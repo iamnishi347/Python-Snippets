@@ -1,4 +1,4 @@
-# Gemini-Pro Python Snippets
+# Python Snippets
 
 A daily, **AI-generated library of useful Python code snippets** with detailed explanations. This project is built to demonstrate the power of automation and AI in generating high-quality, educational content for developers.
 
