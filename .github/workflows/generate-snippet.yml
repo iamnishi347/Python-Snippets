@@ -1,1 +1,30 @@
+name: Generate Daily Code Snippet
 
+on:
+  schedule:
+    - cron: '0 12 * * *' # This runs the job at 12:00 UTC every day
+
+jobs:
+  generate_and_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install google-generativeai
+
+      - name: Generate and commit snippet
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          # Your Python script goes here.
+          # This script will call the Gemini Pro API, get the snippet,
+          # and save it to a new file in your repository.
+          # Example: python generate_snippet.py
