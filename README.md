@@ -1,4 +1,4 @@
-#Python Snippets
+# Python Snippets
 
 A daily, **AI-generated library of useful Python code snippets** with detailed explanations. This project is built to demonstrate the power of automation and AI in generating high-quality, educational content for developers.
 
@@ -15,7 +15,6 @@ This repository is fully automated using **GitHub Actions** and the **Gemini Pro
 ---
 
 ### Snippets Library 📚
-
 You can browse all the generated code snippets here:
 [https://snippets.dft.codes/](https://snippets.dft.codes/)
 
