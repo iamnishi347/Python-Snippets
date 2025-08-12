@@ -2,7 +2,8 @@ name: Generate Daily Code Snippet
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12 * * *'  # Runs every day at 12:00 UTC
+  workflow_dispatch:       # Allow manual trigger
 
 jobs:
   generate_and_commit:
@@ -20,7 +21,20 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify GEMINI_API_KEY exists
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "❌ GEMINI_API_KEY not found in secrets."
+            exit 1
+          else
+            echo "✅ GEMINI_API_KEY is set."
+          fi
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Generate and commit snippet
         run: python generate_snippet.py
