@@ -47,6 +47,7 @@ print(f"Successfully generated new snippet and saved to {filename}")
 # 5. Automate the README.md Update
 readme_file = "README.md"
 readme_content = ""
+# This is the corrected marker variable
 marker = ""
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
 
