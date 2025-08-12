@@ -22,7 +22,8 @@ prompt = (
 
 # 3. Call the Gemini Pro API
 try:
-    model = genai.GenerativeModel('gemini-pro')
+    # This is the corrected line to use the fully-qualified model name.
+    model = genai.GenerativeModel('models/gemini-pro')
     response = model.generate_content(prompt)
     snippet_content = response.text
 except Exception as e:
@@ -46,11 +47,10 @@ print(f"Successfully generated new snippet and saved to {filename}")
 # 5. Automate the README.md Update
 readme_file = "README.md"
 readme_content = ""
+# Note: The marker variable was missing a value in your code.
+marker = "<!-- SNIPPET_INSERT_POINT -->"
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html" # Assuming your GitHub Pages URL structure
 
-# The marker is a placeholder in your README to know where to insert the new link.
-# You will need to add this marker to your README.md file.
-marker = ""
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
 
 with open(readme_file, 'r') as f:
@@ -63,7 +63,7 @@ if marker in readme_content:
         f.write(updated_readme)
     print("Successfully updated README.md with a link to the new snippet.")
 else:
-    print("Warning: Could not find the snippet insertion marker in README.md. Please add '' to your file.")
+    print("Warning: Could not find the snippet insertion marker in README.md. Please add '<!-- SNIPPET_INSERT_POINT -->' to your file.")
 
 # 6. Commit the New Files to the Repository
 try:
