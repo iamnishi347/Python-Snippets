@@ -1,11 +1,12 @@
 import os
-import google.generativeai as genai
 import datetime
 import subprocess
+import requests
+import json
 
 # 1. Configure the Gemini Pro API
 try:
-    genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+    api_key = os.environ["GEMINI_API_KEY"]
 except KeyError:
     print("Error: GEMINI_API_KEY environment variable not set. Please add it to your GitHub Secrets.")
     exit(1)
@@ -20,13 +21,20 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Call the Gemini Pro API
+# 3. Call the Gemini Pro API directly
+api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={api_key}"
+headers = {"Content-Type": "application/json"}
+data = {
+    "contents": [{"parts": [{"text": prompt}]}]
+}
+
 try:
-    # This is the corrected line to use the fully-qualified model name.
-    model = genai.GenerativeModel('models/gemini-pro')
-    response = model.generate_content(prompt)
-    snippet_content = response.text
-except Exception as e:
+    response = requests.post(api_url, headers=headers, data=json.dumps(data))
+    response.raise_for_status() # Raise an exception for bad status codes
+    
+    response_json = response.json()
+    snippet_content = response_json["candidates"][0]["content"]["parts"][0]["text"]
+except requests.exceptions.RequestException as e:
     print(f"Error calling the Gemini API: {e}")
     exit(1)
 
@@ -47,7 +55,6 @@ print(f"Successfully generated new snippet and saved to {filename}")
 # 5. Automate the README.md Update
 readme_file = "README.md"
 readme_content = ""
-# This is the corrected marker variable
 marker = ""
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
 
