@@ -48,7 +48,7 @@ print(f"Successfully generated new snippet and saved to {filename}")
 readme_file = "README.md"
 readme_content = ""
 marker = ""
-snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html" # Assuming your GitHub Pages URL structure
+snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
 
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
 
