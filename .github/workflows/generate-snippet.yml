@@ -1,39 +1,27 @@
 name: Generate Daily Code Snippet
 
-# This workflow is triggered on a schedule (daily at 12:00 UTC).
 on:
   schedule:
     - cron: '0 12 * * *'
 
-# This defines the single job in our workflow.
 jobs:
   generate_and_commit:
     runs-on: ubuntu-latest
-
-    # This grants the workflow permission to write to the repository.
-    # This is required for the `git commit` and `git push` commands to work.
     permissions:
       contents: write
 
     steps:
-      # Step 1: Check out the repository code so the workflow can access your files.
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up the Python environment.
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # Step 3: Install the required Python packages from your requirements.txt file.
-      # You need to create a requirements.txt file in your repository with `google-generativeai` inside it.
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Step 4: Run your Python script.
-      # This step calls your `generate_snippet.py` script.
-      # We pass the GEMINI_API_KEY secret as an environment variable to the script.
       - name: Generate and commit snippet
         run: python generate_snippet.py
         env:
