@@ -23,7 +23,7 @@ prompt = (
 
 # 3. Gemini API endpoint (latest model)
 MODEL = "gemini-1.5-pro"
-api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+api_url = ""https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent""
 headers = {"Content-Type": "application/json"}
 data = {
     "contents": [{"parts": [{"text": prompt}]}]
