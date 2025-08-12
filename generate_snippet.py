@@ -47,8 +47,7 @@ print(f"Successfully generated new snippet and saved to {filename}")
 # 5. Automate the README.md Update
 readme_file = "README.md"
 readme_content = ""
-# Note: The marker variable was missing a value in your code.
-marker = "<!-- SNIPPET_INSERT_POINT -->"
+marker = ""
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html" # Assuming your GitHub Pages URL structure
 
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
@@ -63,7 +62,7 @@ if marker in readme_content:
         f.write(updated_readme)
     print("Successfully updated README.md with a link to the new snippet.")
 else:
-    print("Warning: Could not find the snippet insertion marker in README.md. Please add '<!-- SNIPPET_INSERT_POINT -->' to your file.")
+    print("Warning: Could not find the snippet insertion marker in README.md. Please add '' to your file.")
 
 # 6. Commit the New Files to the Repository
 try:
