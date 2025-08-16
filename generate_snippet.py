@@ -2,7 +2,6 @@ import os
 import datetime
 import subprocess
 import requests
-import json
 import sys
 
 # 1. Load the Gemini API key
@@ -23,16 +22,27 @@ prompt = (
 
 # 3. Gemini API endpoint (latest model)
 MODEL = "gemini-1.5-pro"
-api_url = ""https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent""
+api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={api_key}"
 headers = {"Content-Type": "application/json"}
 data = {
-    "contents": [{"parts": [{"text": prompt}]}]
+    "contents": [
+        {
+            "role": "user",
+            "parts": [{"text": prompt}]
+        }
+    ]
 }
 
 # 4. Call the Gemini API
 try:
-    response = requests.post(api_url, headers=headers, json=data)
-    response.raise_for_status()
+    response = requests.post(api_url, headers=headers, json=data, timeout=60)
+    if response.status_code >= 400:
+        try:
+            print(f"❌ API error ({response.status_code}): {response.json()}")
+        except Exception:
+            print(f"❌ API error ({response.status_code}): {response.text}")
+        response.raise_for_status()
+
     response_json = response.json()
 
     # Extract generated text safely
@@ -62,9 +72,9 @@ with open(filename, "w", encoding="utf-8") as f:
 
 print(f"✅ Snippet saved to {filename}")
 
-# 6. Update README.md
+# 6. Update README.md (optional, requires a marker present in README)
 readme_file = "README.md"
-marker = ""  # Add your insertion marker here
+marker = ""  # e.g., "<!-- SNIPPETS:LIST -->" if you want auto insertion
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
 
