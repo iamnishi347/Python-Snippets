@@ -17,7 +17,6 @@ def get_snippets():
             fpath = os.path.join(SNIPPETS_DIR, fname)
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
-                # Grab first Markdown heading (# Title)
                 match = re.search(r"^#\s+(.+)", content, re.MULTILINE)
                 title = match.group(1).strip() if match else fname.replace(".md", "")
             snippets.append((fname, title))
@@ -31,7 +30,7 @@ def update_readme(snippets):
     new_list = "\n".join(snippet_lines)
 
     new_readme = re.sub(
-        r"(<!-- SNIPPETS:LIST -->)(.*?)(---)",
+        r"(<!-- SNIPPETS:LIST -->)(.*?)(<!-- SNIPPETS:LIST-END -->)",
         f"\\1\n{new_list}\n\\3",
         readme,
         flags=re.S
@@ -75,4 +74,4 @@ if __name__ == "__main__":
     update_readme(snippets)
     generate_sitemap(snippets)
     generate_rss(snippets)
-
+    print("✅ Feeds and README updated successfully.")
