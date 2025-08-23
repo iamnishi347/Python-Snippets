@@ -2,16 +2,17 @@
 <rss version="2.0">
   <channel>
     <title>Python Snippets</title>
-    <link>https://snippets.dft.codes/</link>
-    <description>Daily updated Python code snippets</description>
+    <link>https://snippets.dft.codes</link>
+    <description>Daily Python snippets for learning and reference</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Aug 2025 11:16:04 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 23 Aug 2025 11:16:23 GMT</lastBuildDate>
+    
     <item>
-      <title>2025-08-23</title>
-      <link>https://snippets.dft.codes/snippets/2025-08-23</link>
-      <guid>https://snippets.dft.codes/snippets/2025-08-23</guid>
-      <pubDate>Sat, 23 Aug 2025 11:15:55 GMT</pubDate>
-      <description><![CDATA[ Python snippet: 2025-08-23 ]]></description>
+      <title>Snippet 2025-08-23</title>
+      <link>https://snippets.dft.codes/snippets/2025-08-23.html</link>
+      <guid>https://snippets.dft.codes/snippets/2025-08-23.html</guid>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 GMT</pubDate>
+      <description>Daily Python snippet for 2025-08-23</description>
     </item>
   </channel>
 </rss>
