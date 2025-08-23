@@ -42,4 +42,4 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Update README, RSS, and sitemap
-        run: python update_feed.py
+        run: python update_feeds.py
