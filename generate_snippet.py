@@ -44,11 +44,17 @@ try:
     response.raise_for_status()
     data = response.json()
 
-    snippet_content = data["choices"][0]["message"]["content"].strip()
+    print("DEBUG API RESPONSE:", data)
+
+    if "choices" in data:
+        snippet_content = data["choices"][0]["message"]["content"].strip()
+    elif "response" in data:
+        snippet_content = data["response"]["message"].strip()
+    else:
+        raise ValueError(f"No valid content in API response: {data}")
 
     if not snippet_content:
-        print("❌ Error: Model returned no content. Check model name or key.")
-        sys.exit(1)
+        raise ValueError("Model returned no content")
 
 except Exception as e:
     print(f"❌ API request failed: {e}")
@@ -65,30 +71,12 @@ with open(filename, "w", encoding="utf-8") as f:
 
 print(f"✅ Snippet saved to {filename}")
 
-# 5. Update README.md (optional, requires marker)
-readme_file = "README.md"
-marker = "<!-- SNIPPETS:LIST -->"
-snippet_link = f"snippets/{date_string}.md"
-new_snippet_link = f"* [{date_string}]({snippet_link})\n"
-
-if os.path.exists(readme_file):
-    with open(readme_file, "r", encoding="utf-8") as f:
-        readme_content = f.read()
-
-    if marker and marker in readme_content:
-        updated_readme = readme_content.replace(marker, f"{marker}\n{new_snippet_link}")
-        with open(readme_file, "w", encoding="utf-8") as f:
-            f.write(updated_readme)
-        print("✅ README.md updated.")
-    else:
-        print("⚠️ Marker not found in README.md — skipping update.")
-
-# 6. Commit and push changes
+# 5. Commit and push changes
 try:
     subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
     subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
-    subprocess.run(["git", "add", filename, readme_file], check=True)
-    commit_message = f"docs: Add new code snippet for {date_string} and update README"
+    subprocess.run(["git", "add", filename], check=True)
+    commit_message = f"docs: Add new code snippet for {date_string}"
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push", "origin", "main"], check=True)
     print("✅ Changes committed and pushed.")
