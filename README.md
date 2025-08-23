@@ -20,7 +20,6 @@ You can browse all the generated code snippets here:
 [https://snippets.dft.codes/](https://snippets.dft.codes/)
 
 ## Available Snippets
-## Available Snippets
 <!-- SNIPPETS:LIST -->
 
 - [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/2025-08-23.md)
