@@ -25,17 +25,14 @@ def get_snippets():
 def update_readme(snippets):
     with open(README_FILE, "r", encoding="utf-8") as f:
         readme = f.read()
-
     snippet_lines = [f"* [{title}]({SNIPPETS_DIR}/{fname})" for fname, title in snippets]
     new_list = "\n".join(snippet_lines)
-
     new_readme = re.sub(
         r"(<!-- SNIPPETS:LIST -->)(.*?)(<!-- SNIPPETS:LIST-END -->)",
         f"\\1\n{new_list}\n\\3",
         readme,
         flags=re.S
     )
-
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(new_readme)
 
@@ -57,14 +54,12 @@ def generate_rss(snippets):
     SubElement(channel, "title").text = "Python Snippets"
     SubElement(channel, "link").text = SITE_URL
     SubElement(channel, "description").text = "Daily AI-generated Python snippets"
-
     for fname, title in snippets:
         item = SubElement(channel, "item")
         SubElement(item, "title").text = title
         SubElement(item, "link").text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
         SubElement(item, "guid").text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
         SubElement(item, "pubDate").text = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S +0000")
-
     xml_str = parseString(tostring(rss)).toprettyxml(indent="  ")
     with open(RSS_FILE, "w", encoding="utf-8") as f:
         f.write(xml_str)
