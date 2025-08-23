@@ -1,80 +1,69 @@
 import os
 import datetime
-import subprocess
 
 BASE_URL = "https://snippets.dft.codes"
 SNIPPETS_DIR = "snippets"
 
-def get_last_modified(file_path):
-    """Get last modified date from git log (fallback: filesystem mtime)."""
-    try:
-        timestamp = subprocess.check_output(
-            ["git", "log", "-1", "--format=%ct", file_path],
-            text=True
-        ).strip()
-        return datetime.datetime.utcfromtimestamp(int(timestamp)).strftime("%a, %d %b %Y %H:%M:%S GMT")
-    except Exception:
-        mtime = os.path.getmtime(file_path)
-        return datetime.datetime.utcfromtimestamp(mtime).strftime("%a, %d %b %Y %H:%M:%S GMT")
+def get_snippets():
+    files = sorted(os.listdir(SNIPPETS_DIR))
+    snippets = []
+    for f in files:
+        if f.endswith(".md"):
+            date_str = f.replace(".md", "")
+            url = f"{BASE_URL}/snippets/{f.replace('.md','.html')}"
+            snippets.append((date_str, url))
+    return snippets
 
-def generate_sitemap(snippets):
-    urls = ""
-    for slug, date in snippets:
-        urls += f"""
-  <url>
-    <loc>{BASE_URL}/snippets/{slug}</loc>
-    <lastmod>{date.split()[0]}</lastmod>
-    <priority>0.8</priority>
-  </url>"""
-    return f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>{BASE_URL}/</loc>
-    <priority>1.0</priority>
-  </url>{urls}
-</urlset>"""
-
-def generate_rss(snippets):
+def update_rss(snippets):
+    now = datetime.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT")
     items = ""
-    for slug, date in snippets:
+    for date_str, url in snippets[::-1]:  # latest first
+        pub_date = datetime.datetime.strptime(date_str, "%Y-%m-%d").strftime("%a, %d %b %Y 00:00:00 GMT")
         items += f"""
     <item>
-      <title>{slug}</title>
-      <link>{BASE_URL}/snippets/{slug}</link>
-      <guid>{BASE_URL}/snippets/{slug}</guid>
-      <pubDate>{date}</pubDate>
-      <description><![CDATA[ Python snippet: {slug} ]]></description>
+      <title>Snippet {date_str}</title>
+      <link>{url}</link>
+      <guid>{url}</guid>
+      <pubDate>{pub_date}</pubDate>
+      <description>Daily Python snippet for {date_str}</description>
     </item>"""
-    lastBuildDate = datetime.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT")
-    return f"""<?xml version="1.0" encoding="UTF-8" ?>
+    rss = f"""<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
     <title>Python Snippets</title>
-    <link>{BASE_URL}/</link>
-    <description>Daily updated Python code snippets</description>
+    <link>{BASE_URL}</link>
+    <description>Daily Python snippets for learning and reference</description>
     <language>en-us</language>
-    <lastBuildDate>{lastBuildDate}</lastBuildDate>{items}
+    <lastBuildDate>{now}</lastBuildDate>
+    {items}
   </channel>
 </rss>"""
+    with open("rss.xml", "w") as f:
+        f.write(rss)
 
-def main():
-    snippets = []
-    for fname in os.listdir(SNIPPETS_DIR):
-        if fname.endswith((".py", ".md")):
-            path = os.path.join(SNIPPETS_DIR, fname)
-            slug = os.path.splitext(fname)[0]
-            date = get_last_modified(path)
-            snippets.append((slug, date))
-
-    # Sort by last modified date (latest first)
-    snippets.sort(key=lambda x: x[1], reverse=True)
-
-    # Write files
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
-        f.write(generate_sitemap(snippets))
-
-    with open("rss.xml", "w", encoding="utf-8") as f:
-        f.write(generate_rss(snippets))
+def update_sitemap(snippets):
+    now = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    urls = f"""
+  <url>
+    <loc>{BASE_URL}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>"""
+    for date_str, url in snippets:
+        urls += f"""
+  <url>
+    <loc>{url}</loc>
+    <lastmod>{date_str}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>"""
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{urls}
+</urlset>"""
+    with open("sitemap.xml", "w") as f:
+        f.write(sitemap)
 
 if __name__ == "__main__":
-    main()
+    snippets = get_snippets()
+    update_rss(snippets)
+    update_sitemap(snippets)
