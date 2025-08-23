@@ -20,15 +20,20 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Hugging Face API endpoint (CodeLlama or your chosen model)
-MODEL = "codellama/CodeLlama-7b-Python-hf"  # you can swap with another
+# 3. Hugging Face API endpoint (using 70B Python model)
+MODEL = "meta-llama/CodeLlama-70b-Python-hf"
 api_url = f"https://api-inference.huggingface.co/models/{MODEL}"
 headers = {"Authorization": f"Bearer {api_key}"}
 
 data = {
     "inputs": prompt,
-    "parameters": {"max_new_tokens": 600}
+    "parameters": {
+        "max_new_tokens": 800,   # 70B can handle more tokens
+        "temperature": 0.7,      # balance creativity & determinism
+        "return_full_text": False
+    }
 }
+
 
 # 4. Call the Hugging Face API
 try:
