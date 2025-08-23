@@ -15,8 +15,13 @@ This repository is fully automated using **GitHub Actions** and the **Gemini Pro
 ---
 
 ### Snippets Library 📚
-You can browse all the generated code snippets here:
+
+You can browse all the generated code snippets here:  
 [https://snippets.dft.codes/](https://snippets.dft.codes/)
+
+#### Available Snippets
+<!-- SNIPPETS:LIST -->
+* [2025-08-23](snippets/2025-08-23.md)
 
 ---
 
