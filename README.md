@@ -22,9 +22,6 @@ You can browse all the generated code snippets here:
 #### Available Snippets
 <!-- SNIPPETS:LIST -->
 * [2025-08-23](snippets/2025-08-23.md)
-
-* [2025-08-23](snippets/2025-08-23.md)
-
 ---
 
 ### Getting Started
