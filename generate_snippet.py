@@ -3,64 +3,76 @@ import datetime
 import subprocess
 import sys
 import requests
+import time
 
 # 1. Load the OpenRouter API key
 api_key = os.getenv("OPENROUTER_API_KEY")
 if not api_key:
-    print("❌ Error: OPENROUTER_API_KEY environment variable not set. Please add it to your GitHub Secrets.")
+    print("❌ Error: OPENROUTER_API_KEY environment variable not set.")
     sys.exit(1)
 
 # 2. Define prompt for snippet generation
 prompt = (
     "Generate a useful, modern code snippet for a specific task in Python. "
     "The snippet should be practical and solve a common problem. "
-    "Also, provide a detailed, markdown-formatted explanation of what the code does, "
+    "Provide a detailed, markdown-formatted explanation of what the code does, "
     "why it's useful, and how to run it. "
     "The response should start with a clear, descriptive title using a markdown heading (e.g., # Snippet Title). "
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Call DeepSeek V3 (free) through OpenRouter
-MODEL = "deepseek/deepseek-chat-v3-0324:free"
+# 3. OpenRouter API
 BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
+MODELS = [
+    "deepseek/deepseek-chat-v3-0324:free",
+    "qwen/qwen3-coder:free"  # fallback model
+]
 
 headers = {
     "Authorization": f"Bearer {api_key}",
     "Content-Type": "application/json",
 }
 
-payload = {
-    "model": MODEL,
-    "messages": [
-        {"role": "system", "content": "You are a helpful assistant that generates Python snippets."},
-        {"role": "user", "content": prompt},
-    ],
-    "max_output_tokens": 800,
-    "temperature": 0.7,
-}
+snippet_content = None
 
-try:
-    response = requests.post(BASE_URL, headers=headers, json=payload)
-    response.raise_for_status()
-    data = response.json()
+# 4. Try models with retries
+for model in MODELS:
+    print(f"Trying model: {model}")
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant that generates Python snippets."},
+            {"role": "user", "content": prompt},
+        ],
+        "max_output_tokens": 800,
+        "temperature": 0.7,
+    }
 
-    print("DEBUG API RESPONSE:", data)
+    for attempt in range(3):
+        try:
+            response = requests.post(BASE_URL, headers=headers, json=payload, timeout=60)
+            response.raise_for_status()
+            data = response.json()
+            snippet_content = data.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
+            if snippet_content:
+                print(f"✅ Snippet generated successfully using {model}")
+                break
+            else:
+                raise ValueError(f"No content from model {model}")
+        except Exception as e:
+            print(f"Attempt {attempt+1} failed for model {model}: {e}")
+            if attempt < 2:
+                time.sleep(5)
+            else:
+                print(f"❌ Model {model} failed after 3 attempts.")
+    if snippet_content:
+        break
 
-    if "choices" in data:
-        snippet_content = data["choices"][0]["message"]["content"].strip()
-    elif "response" in data:
-        snippet_content = data["response"]["message"].strip()
-    else:
-        raise ValueError(f"No valid content in API response: {data}")
-
-    if not snippet_content:
-        raise ValueError("Model returned no content")
-
-except Exception as e:
-    print(f"❌ API request failed: {e}")
+if not snippet_content:
+    print("❌ All models failed. Exiting.")
     sys.exit(1)
 
-# 4. Save snippet to file
+# 5. Save snippet to file
 today = datetime.date.today()
 date_string = today.strftime("%Y-%m-%d")
 filename = f"snippets/{date_string}.md"
@@ -71,11 +83,33 @@ with open(filename, "w", encoding="utf-8") as f:
 
 print(f"✅ Snippet saved to {filename}")
 
-# 5. Commit and push changes
+# 6. Update README.md
+readme_file = "README.md"
+marker_start = "<!-- SNIPPETS:LIST -->"
+marker_end = "<!-- SNIPPETS:LIST-END -->"
+new_snippet_link = f"* [{snippet_content.splitlines()[0].replace('#','').strip()}]({filename})\n"
+
+if os.path.exists(readme_file):
+    with open(readme_file, "r", encoding="utf-8") as f:
+        readme_content = f.read()
+    if marker_start in readme_content:
+        updated_readme = re.sub(
+            f"({marker_start})(.*?)({marker_end})",
+            f"\\1\n{new_snippet_link}\\2\\3",
+            readme_content,
+            flags=re.S
+        )
+        with open(readme_file, "w", encoding="utf-8") as f:
+            f.write(updated_readme)
+        print("✅ README.md updated.")
+    else:
+        print("⚠️ Marker not found in README.md — skipping update.")
+
+# 7. Commit and push
 try:
     subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
     subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
-    subprocess.run(["git", "add", filename], check=True)
+    subprocess.run(["git", "add", filename, readme_file], check=True)
     commit_message = f"docs: Add new code snippet for {date_string}"
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push", "origin", "main"], check=True)
