@@ -20,20 +20,28 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Initialize Hugging Face Inference Client
-MODEL = "mistralai/Mistral-7B-v0.1"
+# 3. Initialize Hugging Face Inference Client with FLAN-T5-Large
+MODEL = "google/flan-t5-large"
 client = InferenceClient(model=MODEL, token=api_key)
 
 # 4. Generate snippet
 try:
-    snippet_content = client.text_generation(
+    response = client.text_generation(
         prompt,
         max_new_tokens=800,
         temperature=0.7,
+        return_full_text=False,
     )
+
+    if isinstance(response, str):
+        snippet_content = response.strip()
+    else:
+        snippet_content = str(response)
+
     if not snippet_content:
         print("❌ Error: Model returned no content. Check model name or token.")
         sys.exit(1)
+
 except Exception as e:
     print(f"❌ API request failed: {e}")
     sys.exit(1)
@@ -51,8 +59,8 @@ print(f"✅ Snippet saved to {filename}")
 
 # 6. Update README.md (optional, requires a marker present in README)
 readme_file = "README.md"
-marker = ""  # e.g., "<!-- SNIPPETS:LIST -->"
-snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
+marker = "<!-- SNIPPETS:LIST -->"  # add this marker to README.md where you want links to appear
+snippet_link = f"snippets/{date_string}.md"
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
 
 if os.path.exists(readme_file):
