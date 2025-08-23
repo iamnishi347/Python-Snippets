@@ -6,7 +6,7 @@ on:
   workflow_dispatch:       # Allow manual trigger
 
 jobs:
-  generate_and_commit:
+  generate_and_update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -36,7 +36,10 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
-      - name: Generate and commit snippet
+      - name: Generate new snippet
         run: python generate_snippet.py
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
+      - name: Update README, RSS, and sitemap
+        run: python update_feed.py
