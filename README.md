@@ -22,9 +22,10 @@ You can browse all the generated code snippets here:
 ## Available Snippets
 <!-- AUTO_SNIPPETS_START -->
 
-- [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/aiohttp_async.md)
+- [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/2025-08-23.md)
 
 <!-- AUTO_SNIPPETS_END -->
+
 
 
 ### Getting Started
