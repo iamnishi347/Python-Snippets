@@ -1,8 +1,8 @@
 import os
 import datetime
 import subprocess
-import requests
 import sys
+from huggingface_hub import InferenceClient
 
 # 1. Load the Hugging Face API token
 api_key = os.getenv("HF_API_TOKEN")
@@ -20,43 +20,21 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Hugging Face API endpoint (using free Mistral model)
+# 3. Initialize Hugging Face Inference Client
 MODEL = "mistralai/Mistral-7B-v0.1"
-api_url = f"https://api-inference.huggingface.co/models/{MODEL}"
-headers = {"Authorization": f"Bearer {api_key}"}
+client = InferenceClient(model=MODEL, token=api_key)
 
-data = {
-    "inputs": prompt,
-    "parameters": {
-        "max_new_tokens": 800,
-        "temperature": 0.7,
-        "return_full_text": False
-    }
-}
-
-# 4. Call the Hugging Face API
+# 4. Generate snippet
 try:
-    response = requests.post(api_url, headers=headers, json=data, timeout=60)
-    if response.status_code >= 400:
-        try:
-            print(f"❌ API error ({response.status_code}): {response.json()}")
-        except Exception:
-            print(f"❌ API error ({response.status_code}): {response.text}")
-        response.raise_for_status()
-
-    response_json = response.json()
-
-    # Extract generated text safely
-    if isinstance(response_json, list) and len(response_json) > 0:
-        snippet_content = response_json[0].get("generated_text", "")
-    else:
-        snippet_content = response_json.get("generated_text", "")
-
+    snippet_content = client.text_generation(
+        prompt,
+        max_new_tokens=800,
+        temperature=0.7,
+    )
     if not snippet_content:
-        print("❌ Error: API returned no content. Check model name or token.")
+        print("❌ Error: Model returned no content. Check model name or token.")
         sys.exit(1)
-
-except requests.exceptions.RequestException as e:
+except Exception as e:
     print(f"❌ API request failed: {e}")
     sys.exit(1)
 
@@ -73,7 +51,7 @@ print(f"✅ Snippet saved to {filename}")
 
 # 6. Update README.md (optional, requires a marker present in README)
 readme_file = "README.md"
-marker = ""  # e.g., "<!-- SNIPPETS:LIST -->" if you want auto insertion
+marker = ""  # e.g., "<!-- SNIPPETS:LIST -->"
 snippet_link = f"https://snippets.dft.codes/snippets/{date_string}.html"
 new_snippet_link = f"* [{date_string}]({snippet_link})\n"
 
