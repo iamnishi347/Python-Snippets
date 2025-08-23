@@ -25,18 +25,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verify HF_API_TOKEN exists
+      - name: Verify OPENROUTER_API_KEY exists
         run: |
-          if [ -z "$HF_API_TOKEN" ]; then
-            echo "❌ HF_API_TOKEN not found in secrets."
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "❌ OPENROUTER_API_KEY not found in secrets."
             exit 1
           else
-            echo "✅ HF_API_TOKEN is set."
+            echo "✅ OPENROUTER_API_KEY is set."
           fi
         env:
-          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Generate and commit snippet
         run: python generate_snippet.py
         env:
-          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
