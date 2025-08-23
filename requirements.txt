@@ -1,2 +1,5 @@
-google-generativeai
-requests
+huggingface-hub
+transformers
+torch
+accelerate
+safetensors
