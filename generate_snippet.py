@@ -20,20 +20,19 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. Hugging Face API endpoint (using 70B Python model)
-MODEL = "meta-llama/CodeLlama-70b-Python-hf"
+# 3. Hugging Face API endpoint (using free Mistral model)
+MODEL = "mistralai/Mistral-7B-v0.1"
 api_url = f"https://api-inference.huggingface.co/models/{MODEL}"
 headers = {"Authorization": f"Bearer {api_key}"}
 
 data = {
     "inputs": prompt,
     "parameters": {
-        "max_new_tokens": 800,   # 70B can handle more tokens
-        "temperature": 0.7,      # balance creativity & determinism
+        "max_new_tokens": 800,
+        "temperature": 0.7,
         "return_full_text": False
     }
 }
-
 
 # 4. Call the Hugging Face API
 try:
