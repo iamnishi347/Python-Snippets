@@ -19,10 +19,13 @@ This repository is fully automated using **GitHub Actions** and the **Gemini Pro
 You can browse all the generated code snippets here:  
 [https://snippets.dft.codes/](https://snippets.dft.codes/)
 
-#### Available Snippets
-<!-- SNIPPETS:LIST -->
-* [2025-08-23](snippets/2025-08-23.md)
----
+## Available Snippets
+<!-- AUTO_SNIPPETS_START -->
+
+- [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/aiohttp_async.md)
+
+<!-- AUTO_SNIPPETS_END -->
+
 
 ### Getting Started
 
