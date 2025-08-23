@@ -1,5 +1,4 @@
-huggingface-hub
-transformers
-torch
-accelerate
-safetensors
+requests>=2.31.0
+black
+flake8
+orjson
