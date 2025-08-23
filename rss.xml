@@ -5,10 +5,10 @@
     <link>https://snippets.dft.codes</link>
     <description>Daily AI-generated Python snippets</description>
     <item>
-      <title>Asynchronous HTTP Requests with aiohttp for Concurrent API Calls</title>
+      <title>Asynchronous Web Scraper with aiohttp and BeautifulSoup</title>
       <link>https://snippets.dft.codes/snippets/2025-08-23.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-23.md</guid>
-      <pubDate>Sat, 23 Aug 2025 14:11:21 +0000</pubDate>
+      <pubDate>Sat, 23 Aug 2025 14:18:18 +0000</pubDate>
     </item>
   </channel>
 </rss>
