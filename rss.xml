@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
     <title>Python Snippets</title>
     <link>https://snippets.dft.codes/</link>
-    <description>Daily AI-generated Python code snippets with explanations.</description>
-    <item>
-      <title>Snippet - Aug 23, 2025</title>
-      <link>https://snippets.dft.codes/snippet-2025-08-23</link>
-      <pubDate>Sat, 23 Aug 2025 12:00:00 GMT</pubDate>
-      <description>Useful Python snippet generated today.</description>
-    </item>
+    <description>Daily updated Python code snippets</description>
+    <language>en-us</language>
+    <lastBuildDate>{{lastBuildDate}}</lastBuildDate>
+
+    {{items}}
   </channel>
 </rss>
