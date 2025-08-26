@@ -4,6 +4,7 @@ import subprocess
 import sys
 import requests
 import time
+import re
 
 # 1. Load the OpenRouter API key
 api_key = os.getenv("OPENROUTER_API_KEY")
