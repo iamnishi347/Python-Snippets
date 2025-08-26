@@ -12,8 +12,24 @@ if not api_key:
     print("❌ Error: OPENROUTER_API_KEY environment variable not set.")
     sys.exit(1)
 
-# 2. Define prompt for snippet generation
+# 2. Collect existing snippet titles from README (to avoid duplicates)
+existing_titles = []
+readme_file = "README.md"
+if os.path.exists(readme_file):
+    with open(readme_file, "r", encoding="utf-8") as f:
+        readme_content = f.read()
+        # Extract titles inside snippet list section
+        match = re.search(r"<!-- SNIPPETS:LIST -->(.*?)<!-- SNIPPETS:LIST-END -->", readme_content, re.S)
+        if match:
+            existing_titles = re.findall(r"\* \[(.*?)\]", match.group(1))
+
+# 3. Define prompt for snippet generation with duplicate avoidance
+avoid_text = ""
+if existing_titles:
+    avoid_text = "Avoid generating snippets about: " + ", ".join(existing_titles[:10]) + ". "
+
 prompt = (
+    avoid_text +
     "Generate a useful, modern code snippet for a specific task in Python. "
     "The snippet should be practical and solve a common problem. "
     "Provide a detailed, markdown-formatted explanation of what the code does, "
@@ -22,7 +38,7 @@ prompt = (
     "Place the code in a markdown code block, and the explanation below it."
 )
 
-# 3. OpenRouter API
+# 4. OpenRouter API
 BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODELS = [
     "deepseek/deepseek-chat-v3-0324:free",
@@ -36,7 +52,7 @@ headers = {
 
 snippet_content = None
 
-# 4. Try models with retries
+# 5. Try models with retries
 for model in MODELS:
     print(f"Trying model: {model}")
     payload = {
@@ -46,7 +62,7 @@ for model in MODELS:
             {"role": "user", "content": prompt},
         ],
         "max_output_tokens": 800,
-        "temperature": 0.7,
+        "temperature": 0.9,  # make outputs more varied
     }
 
     for attempt in range(3):
@@ -73,7 +89,7 @@ if not snippet_content:
     print("❌ All models failed. Exiting.")
     sys.exit(1)
 
-# 5. Save snippet to file
+# 6. Save snippet to file
 today = datetime.date.today()
 date_string = today.strftime("%Y-%m-%d")
 filename = f"snippets/{date_string}.md"
@@ -84,8 +100,7 @@ with open(filename, "w", encoding="utf-8") as f:
 
 print(f"✅ Snippet saved to {filename}")
 
-# 6. Update README.md
-readme_file = "README.md"
+# 7. Update README.md
 marker_start = "<!-- SNIPPETS:LIST -->"
 marker_end = "<!-- SNIPPETS:LIST-END -->"
 new_snippet_link = f"* [{snippet_content.splitlines()[0].replace('#','').strip()}]({filename})\n"
@@ -106,7 +121,7 @@ if os.path.exists(readme_file):
     else:
         print("⚠️ Marker not found in README.md — skipping update.")
 
-# 7. Commit and push
+# 8. Commit and push
 try:
     subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
     subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
