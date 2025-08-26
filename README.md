@@ -46,6 +46,15 @@ This project is a work in progress. If you have suggestions for new snippets or 
 
 ---
 
+### Useful Pages
+
+* [About](about.md)
+* [Contact](contact.md)
+* [Privacy Policy](privacy.md)
+
+---
+
+
 ### License
 
 This project is licensed under the MIT License.
