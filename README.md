@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time File System Monitor with Pattern Matching](snippets/2025-08-27.md)
+
 * [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/2025-08-26.md)
 * [Asynchronous Web Scraper with aiohttp and BeautifulSoup](snippets/2025-08-23.md)
 <!-- SNIPPETS:LIST-END -->
