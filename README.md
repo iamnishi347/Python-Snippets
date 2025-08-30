@@ -22,7 +22,6 @@ You can browse all the generated code snippets here:
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
 * [Efficient CSV Data Validation with Pandas](snippets/2025-08-30.md)
-
 * [Parallel Image Processing with Multiprocessing](snippets/2025-08-29.md)
 * [Real-time File System Monitor with Pattern Matching](snippets/2025-08-27.md)
 * [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/2025-08-26.md)
