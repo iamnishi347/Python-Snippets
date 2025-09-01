@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic Database Backup with Rotation and Compression](snippets/2025-09-01.md)
+
 * [Efficient CSV Data Validation with Pandas](snippets/2025-08-30.md)
 * [Parallel Image Processing with Multiprocessing](snippets/2025-08-29.md)
 * [Real-time File System Monitor with Pattern Matching](snippets/2025-08-27.md)
