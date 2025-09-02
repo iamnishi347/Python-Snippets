@@ -5,40 +5,46 @@
     <link>https://snippets.dft.codes</link>
     <description>Daily AI-generated Python snippets</description>
     <item>
+      <title>Secure Password Generator with Customizable Complexity</title>
+      <link>https://snippets.dft.codes/snippets/2025-09-02.md</link>
+      <guid>https://snippets.dft.codes/snippets/2025-09-02.md</guid>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
+    </item>
+    <item>
       <title>Automatic Database Backup with Rotation and Compression</title>
       <link>https://snippets.dft.codes/snippets/2025-09-01.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-09-01.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
     <item>
       <title>Efficient CSV Data Validation with Pandas</title>
       <link>https://snippets.dft.codes/snippets/2025-08-30.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-30.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
     <item>
       <title>Parallel Image Processing with Multiprocessing</title>
       <link>https://snippets.dft.codes/snippets/2025-08-29.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-29.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
     <item>
       <title>Real-time File System Monitor with Pattern Matching</title>
       <link>https://snippets.dft.codes/snippets/2025-08-27.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-27.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
     <item>
       <title>Asynchronous HTTP Requests with aiohttp for Concurrent API Calls</title>
       <link>https://snippets.dft.codes/snippets/2025-08-26.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-26.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
     <item>
       <title>Asynchronous Web Scraper with aiohttp and BeautifulSoup</title>
       <link>https://snippets.dft.codes/snippets/2025-08-23.md</link>
       <guid>https://snippets.dft.codes/snippets/2025-08-23.md</guid>
-      <pubDate>Mon, 01 Sep 2025 12:32:27 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 12:32:38 +0000</pubDate>
     </item>
   </channel>
 </rss>
