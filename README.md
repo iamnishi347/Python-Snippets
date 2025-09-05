@@ -22,7 +22,6 @@ You can browse all the generated code snippets here:
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
 * [Simple Yet Effective Web API Rate Limiter Decorator](snippets/2025-09-05.md)
-
 * [Efficient JSON Log Parser for Large Files](snippets/2025-09-03.md)
 * [Secure Password Generator with Customizable Complexity](snippets/2025-09-02.md)
 * [Automatic Database Backup with Rotation and Compression](snippets/2025-09-01.md)
