@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Smart Configuration Manager with Environment Variable Override](snippets/2025-09-06.md)
+
 * [Simple Yet Effective Web API Rate Limiter Decorator](snippets/2025-09-05.md)
 * [Efficient JSON Log Parser for Large Files](snippets/2025-09-03.md)
 * [Secure Password Generator with Customizable Complexity](snippets/2025-09-02.md)
