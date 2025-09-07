@@ -17,7 +17,8 @@ def get_snippets():
             fpath = os.path.join(SNIPPETS_DIR, fname)
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
-                match = re.search(r"^#\s+(.+)", content, re.MULTILINE)
+                # Extract <h1>Title</h1> instead of markdown "# Title"
+                match = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.IGNORECASE)
                 title = match.group(1).strip() if match else fname.replace(".html", "")
             snippets.append((fname, title))
     return snippets
