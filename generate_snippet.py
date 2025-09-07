@@ -92,7 +92,7 @@ if not snippet_content:
 # 6. Save snippet to file
 today = datetime.date.today()
 date_string = today.strftime("%Y-%m-%d")
-filename = f"snippets/{date_string}.md"
+filename = f"snippets/{date_string}.html"
 
 os.makedirs(os.path.dirname(filename), exist_ok=True)
 with open(filename, "w", encoding="utf-8") as f:
