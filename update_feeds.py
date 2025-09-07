@@ -13,12 +13,12 @@ RSS_FILE = "rss.xml"
 def get_snippets():
     snippets = []
     for fname in sorted(os.listdir(SNIPPETS_DIR), reverse=True):
-        if fname.endswith(".md"):
+        if fname.endswith(".html"):
             fpath = os.path.join(SNIPPETS_DIR, fname)
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
                 match = re.search(r"^#\s+(.+)", content, re.MULTILINE)
-                title = match.group(1).strip() if match else fname.replace(".md", "")
+                title = match.group(1).strip() if match else fname.replace(".html", "")
             snippets.append((fname, title))
     return snippets
 
