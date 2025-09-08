@@ -1,0 +1,57 @@
+# Efficiently Monitor and Log Memory Usage of a Python Application  
+
+This snippet demonstrates how to monitor and log memory usage of a Python application in real-time, helping identify memory leaks or inefficient resource usage.  
+
+```python
+import tracemalloc
+import logging
+from datetime import datetime
+import time
+
+def setup_memory_monitor(interval=10, log_file='memory_usage.log'):
+    """Monitor memory usage at regular intervals and log results."""
+    logging.basicConfig(
+        filename=log_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(message)s'
+    )
+    tracemalloc.start()
+
+    try:
+        while True:
+            current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            snapshot = tracemalloc.take_snapshot()
+            top_stats = snapshot.statistics('lineno')
+
+            logging.info(f"Memory usage at {current_time}:")
+            for stat in top_stats[:5]:  # Log top 5 memory-consuming lines
+                logging.info(f"{stat.count} blocks - {stat.size / 1024:.2f} KiB - {stat.traceback}")
+
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        tracemalloc.stop()
+        print("Memory monitoring stopped.")
+
+if __name__ == '__main__':
+    print("Starting memory monitor... (Press Ctrl+C to stop)")
+    setup_memory_monitor(interval=5)  # Check every 5 seconds
+```
+
+## Why This Is Useful  
+- **Identifies Memory Leaks:** Helps detect unexpected memory growth in long-running applications.  
+- **Optimizes Performance:** Reveals which parts of your code consume the most memory.  
+- **Lightweight:** Uses Python's built-in `tracemalloc` module without external dependencies.  
+
+## How to Use  
+1. **Run the Script:** Execute the script alongside your main application (or modify it to monitor a specific function).  
+2. **Analyze Output:** Check the generated `memory_usage.log` file for detailed memory statistics.  
+3. **Adjust Interval:** Change the `interval` parameter (in seconds) to balance granularity and overhead.  
+
+Example log output:  
+```
+2024-01-15 14:30:00 - Memory usage at 2024-01-15 14:30:00:  
+42 blocks - 1280.50 KiB - File "app.py", line 15  
+12 blocks - 640.25 KiB - File "utils.py", line 8  
+```  
+
+**Note:** For production use, consider integrating this with tools like `logging.handlers.RotatingFileHandler` for log rotation.
