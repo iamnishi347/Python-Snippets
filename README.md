@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Asynchronous HTTP Requests with aiohttp](snippets/2025-09-10.html)
+
 * [2025-09-09](snippets/2025-09-09.html)
 * [2025-09-08](snippets/2025-09-08.html)
 <!-- SNIPPETS:LIST-END -->
