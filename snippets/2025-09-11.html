@@ -1,0 +1,64 @@
+# HTTP Request Retry Decorator with Exponential Backoff  
+
+This snippet demonstrates how to create a decorator in Python that automatically retries HTTP requests with exponential backoff—a useful pattern for handling transient failures (e.g., rate limits, temporary network issues).  
+
+```python
+import time
+import requests
+from functools import wraps
+from requests.exceptions import RequestException
+
+def retry_request(max_retries=3, initial_delay=1, backoff_factor=2):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            retries = 0
+            delay = initial_delay
+            while retries < max_retries:
+                try:
+                    response = func(*args, **kwargs)
+                    response.raise_for_status()  # Raise HTTP errors
+                    return response
+                except RequestException as e:
+                    retries += 1
+                    if retries == max_retries:
+                        raise
+                    print(f"Request failed ({e}), retrying in {delay} seconds...")
+                    time.sleep(delay)
+                    delay *= backoff_factor  # Exponential backoff
+        return wrapper
+    return decorator
+
+# Example usage
+@retry_request(max_retries=5, initial_delay=1, backoff_factor=2)
+def fetch_data(url):
+    return requests.get(url)
+
+# Test the function (replace with a real URL)
+try:
+    response = fetch_data("https://api.example.com/data")
+    print("Request succeeded:", response.status_code)
+except Exception as e:
+    print("Request failed after retries:", e)
+```
+
+### Explanation  
+
+#### **What It Does**  
+- The `retry_request` decorator wraps an HTTP request function (e.g., `requests.get`) and retries failed requests with exponential backoff.  
+- If a request fails (due to network issues or HTTP errors), it waits (`delay` seconds) before retrying, increasing the delay exponentially (`delay *= backoff_factor`) with each attempt.  
+- After `max_retries`, it raises the last exception if all attempts fail.  
+
+#### **Why It's Useful**  
+- **Resilience**: Handles temporary failures common in distributed systems or rate-limited APIs.  
+- **Configurable**: Adjust `max_retries`, `initial_delay`, and `backoff_factor` based on needs.  
+- **Reusable**: The decorator works with any function making HTTP requests.  
+
+#### **How to Run**  
+1. Replace `"https://api.example.com/data"` with a real API endpoint.  
+2. Call `fetch_data(url)`—it will retry on failures automatically.  
+
+#### **Dependencies**  
+- Requires the `requests` library (`pip install requests`).  
+
+This snippet is widely applicable for web scraping, microservices, and API integrations where reliability matters.
