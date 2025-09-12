@@ -1,0 +1,70 @@
+# File Size Monitor Script  
+
+This Python snippet monitors the size of a specified file and alerts the user if the file grows beyond a specified threshold. This is useful for logging systems, large data files, or any scenario where unexpected file growth could indicate an issue.
+
+```python
+import os
+import time
+
+def monitor_file_size(file_path, max_size_mb, check_interval=60):
+    """
+    Monitor a file's size and alert if it exceeds a threshold.
+    
+    Args:
+        file_path (str): Path to the file to monitor.
+        max_size_mb (float): Maximum allowed file size in megabytes.
+        check_interval (int): Time between checks in seconds (default: 60).
+    """
+    max_size_bytes = max_size_mb * 1024 * 1024  # Convert MB to bytes
+    
+    try:
+        while True:
+            if not os.path.exists(file_path):
+                print(f"Error: File {file_path} does not exist.")
+                break
+            
+            file_size = os.path.getsize(file_path)
+            file_size_mb = file_size / (1024 * 1024)
+            
+            if file_size > max_size_bytes:
+                print(f"ALERT: File {file_path} has exceeded {max_size_mb} MB. Current size: {file_size_mb:.2f} MB")
+            else:
+                print(f"File size OK: {file_size_mb:.2f} MB / {max_size_mb} MB")
+            
+            time.sleep(check_interval)
+    
+    except KeyboardInterrupt:
+        print("\nMonitoring stopped.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+if __name__ == "__main__":
+    file_to_monitor = "/var/log/syslog"  # Example file (adjust as needed)
+    monitor_file_size(file_to_monitor, max_size_mb=10)  # Alert if >10MB
+```
+
+## Explanation  
+
+### What It Does  
+This script:  
+1. Continuously checks the size of a specified file at regular intervals.  
+2. Converts the file size to megabytes (MB) for readability.  
+3. Alerts the user if the file exceeds a specified threshold size.  
+4. Gracefully handles interruptions (Ctrl+C) and errors.  
+
+### Why It's Useful  
+- **Log Management**: Prevents log files from growing uncontrollably.  
+- **Disk Space Monitoring**: Helps avoid unexpected disk space issues.  
+- **Customizable**: Adjust the threshold (`max_size_mb`) and check interval (`check_interval`) as needed.  
+
+### How to Run It  
+1. Save the script as `file_monitor.py`.  
+2. Modify `file_to_monitor` and `max_size_mb` in the example usage.  
+3. Run with Python:  
+   ```bash
+   python3 file_monitor.py
+   ```  
+4. Press `Ctrl+C` to stop monitoring.  
+
+For production use, consider extending this script to send email alerts or integrate with logging systems.

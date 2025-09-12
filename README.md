@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [File Size Monitor Script](snippets/2025-09-12.html)
+
 * [2025-09-11](snippets/2025-09-11.html)
 * [2025-09-10](snippets/2025-09-10.html)
 * [2025-09-09](snippets/2025-09-09.html)
