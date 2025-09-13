@@ -21,6 +21,8 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Download and Save an Image from a URL in Python](snippets/2025-09-13.html)
+
 * [2025-09-12](snippets/2025-09-12.html)
 * [2025-09-11](snippets/2025-09-11.html)
 * [2025-09-10](snippets/2025-09-10.html)
