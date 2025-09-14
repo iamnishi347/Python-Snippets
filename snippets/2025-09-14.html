@@ -1,0 +1,61 @@
+# Asynchronous File Downloader with Progress Bar  
+
+This snippet demonstrates how to download files asynchronously in Python while displaying a progress bar. It uses `aiohttp` for asynchronous HTTP requests and `tqdm` for the progress bar visualization.  
+
+```python
+import aiohttp
+import asyncio
+from tqdm import tqdm
+
+async def download_file(url, destination):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            if response.status != 200:
+                raise Exception(f"Failed to download file: HTTP {response.status}")
+            
+            total_size = int(response.headers.get('content-length', 0))
+            block_size = 1024  # 1 KB
+            
+            with open(destination, 'wb') as file, tqdm(
+                total=total_size,
+                unit='B',
+                unit_scale=True,
+                desc=f"Downloading {destination}"
+            ) as progress_bar:
+                async for chunk in response.content.iter_chunked(block_size):
+                    file.write(chunk)
+                    progress_bar.update(len(chunk))
+
+async def main():
+    url = "https://example.com/largefile.zip"
+    destination = "largefile.zip"
+    await download_file(url, destination)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+### Explanation  
+
+#### **What It Does**  
+- The script downloads a file from a given URL asynchronously, making it efficient for large files or multiple downloads.  
+- It displays a progress bar using `tqdm`, showing the download progress in real-time.  
+- The file is saved to the specified `destination` path.  
+
+#### **Why It's Useful**  
+- **Efficiency**: Uses `aiohttp` for non-blocking HTTP requests, improving performance.  
+- **User Feedback**: The progress bar (`tqdm`) provides visual feedback, which is helpful for large downloads.  
+- **Error Handling**: Checks HTTP status and raises an exception if the download fails.  
+
+#### **How to Run**  
+1. Install dependencies:  
+   ```sh
+   pip install aiohttp tqdm
+   ```
+2. Replace `url` and `destination` in the `main()` function with your desired file and output path.  
+3. Run the script:  
+   ```sh
+   python downloader.py
+   ```  
+
+This snippet is ideal for scripts requiring efficient file downloads with a user-friendly progress indicator.
