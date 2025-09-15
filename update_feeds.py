@@ -11,6 +11,7 @@ SITEMAP_FILE = "sitemap.xml"
 RSS_FILE = "rss.xml"
 
 def get_snippets():
+    """Return all snippets (md + html) with titles."""
     snippets = []
     for fname in sorted(os.listdir(SNIPPETS_DIR), reverse=True):
         if not (fname.endswith(".html") or fname.endswith(".md")):
@@ -36,6 +37,7 @@ def get_snippets():
     return snippets
 
 def update_readme(snippets):
+    """Update README with all snippets (.md + .html)."""
     with open(README_FILE, "r", encoding="utf-8") as f:
         readme = f.read()
 
@@ -53,10 +55,13 @@ def update_readme(snippets):
         f.write(new_readme)
 
 def generate_sitemap(snippets):
+    """Generate sitemap only for .html snippets."""
     urlset = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     today = datetime.date.today().isoformat()
 
     for fname, _ in snippets:
+        if not fname.endswith(".html"):
+            continue
         url = SubElement(urlset, "url")
         loc = SubElement(url, "loc")
         loc.text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
@@ -68,13 +73,16 @@ def generate_sitemap(snippets):
         f.write(xml_str)
 
 def generate_rss(snippets):
+    """Generate RSS feed only for .html snippets."""
     rss = Element("rss", version="2.0")
     channel = SubElement(rss, "channel")
     SubElement(channel, "title").text = "Python Snippets"
     SubElement(channel, "link").text = SITE_URL
     SubElement(channel, "description").text = "Daily AI-generated Python snippets"
 
-    for fname, title in snippets[:20]:  # latest 20
+    html_snippets = [s for s in snippets if s[0].endswith(".html")]
+
+    for fname, title in html_snippets[:20]:  # latest 20 html only
         item = SubElement(channel, "item")
         SubElement(item, "title").text = title
         SubElement(item, "link").text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
@@ -92,4 +100,4 @@ if __name__ == "__main__":
     update_readme(snippets)
     generate_sitemap(snippets)
     generate_rss(snippets)
-    print("✅ Feeds and README updated successfully with titles.")
+    print("✅ Feeds and README updated successfully (HTML only in RSS + sitemap).")
