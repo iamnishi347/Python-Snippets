@@ -11,30 +11,32 @@ SITEMAP_FILE = "sitemap.xml"
 RSS_FILE = "rss.xml"
 
 def get_snippets():
-    """Return all snippets (md + html) with titles."""
     snippets = []
     for fname in sorted(os.listdir(SNIPPETS_DIR), reverse=True):
-        if not (fname.endswith(".html") or fname.endswith(".md")):
-            continue
-        fpath = os.path.join(SNIPPETS_DIR, fname)
-        with open(fpath, "r", encoding="utf-8") as f:
-            content = f.read()
+        if fname.endswith((".html", ".md")):
+            fpath = os.path.join(SNIPPETS_DIR, fname)
+            with open(fpath, "r", encoding="utf-8") as f:
+                content = f.read()
 
-        title = None
-        if fname.endswith(".html"):
-            match = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.IGNORECASE)
-            if match:
-                title = match.group(1).strip()
-        elif fname.endswith(".md"):
-            match = re.search(r"^# (.*)", content, re.MULTILINE)
-            if match:
-                title = match.group(1).strip()
+            title = None
+            if fname.endswith(".html"):
+                # Look for <h1> in HTML
+                match = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.IGNORECASE)
+                if match:
+                    title = match.group(1).strip()
+            else:
+                # Look for markdown "# Title" in MD
+                match = re.search(r"^# (.*)", content, re.MULTILINE)
+                if match:
+                    title = match.group(1).strip()
 
-        if not title:
-            title = fname.replace(".html", "").replace(".md", "")
+            # Fallback if no title found
+            if not title:
+                title = fname.replace(".html", "").replace(".md", "")
 
-        snippets.append((fname, title))
+            snippets.append((fname, title))
     return snippets
+
 
 def update_readme(snippets):
     """Update README with all snippets (.md + .html)."""
