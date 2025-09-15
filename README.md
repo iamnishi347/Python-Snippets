@@ -29,6 +29,17 @@ You can browse all the generated code snippets here:
 * [2025-09-10](snippets/2025-09-10.html)
 * [2025-09-09](snippets/2025-09-09.html)
 * [2025-09-08](snippets/2025-09-08.html)
+* [FastAPI Endpoint for Uploading and Validating CSV Files](snippets/2025-09-07.md)
+* [Smart Configuration Manager with Environment Variable Override](snippets/2025-09-06.md)
+* [Simple Yet Effective Web API Rate Limiter Decorator](snippets/2025-09-05.md)
+* [Efficient JSON Log Parser for Large Files](snippets/2025-09-03.md)
+* [Secure Password Generator with Customizable Complexity](snippets/2025-09-02.md)
+* [Automatic Database Backup with Rotation and Compression](snippets/2025-09-01.md)
+* [Efficient CSV Data Validation with Pandas](snippets/2025-08-30.md)
+* [Parallel Image Processing with Multiprocessing](snippets/2025-08-29.md)
+* [Real-time File System Monitor with Pattern Matching](snippets/2025-08-27.md)
+* [Asynchronous HTTP Requests with aiohttp for Concurrent API Calls](snippets/2025-08-26.md)
+* [Asynchronous Web Scraper with aiohttp and BeautifulSoup](snippets/2025-08-23.md)
 <!-- SNIPPETS:LIST-END -->
 
 

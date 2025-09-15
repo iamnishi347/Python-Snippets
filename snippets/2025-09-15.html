@@ -1,87 +1,140 @@
-# Generate and Verify Secure Passwords in Python
+# Real-time Currency Converter with API Integration
 
 ```python
-import secrets
-import string
-from datetime import datetime, timedelta
-import re
+import requests
+import json
+from typing import Dict, Optional
 
-def generate_password(length=16, include_symbols=True):
-    """Generate a secure random password with customizable options."""
-    characters = string.ascii_letters + string.digits
-    if include_symbols:
-        characters += string.punctuation
+class CurrencyConverter:
+    def __init__(self, api_key: str = None):
+        """
+        Initialize the currency converter with optional API key.
+        Uses exchangerate-api.com as the default service.
+        """
+        self.api_key = api_key
+        self.base_url = "https://api.exchangerate-api.com/v4/latest/"
+        self.rates_cache = {}
     
-    while True:
-        password = ''.join(secrets.choice(characters) for _ in range(length))
-        # Ensure password meets complexity requirements
-        if (any(c.islower() for c in password) and
-            any(c.isupper() for c in password) and
-            any(c.isdigit() for c in password) and
-            (not include_symbols or any(c in string.punctuation for c in password))):
-            return password
-
-def password_strength(password):
-    """Evaluate and return the strength of a password."""
-    strength = 0
-    length = len(password)
-    
-    # Length check
-    if length >= 12:
-        strength += 2
-    elif length >= 8:
-        strength += 1
+    def get_exchange_rates(self, base_currency: str = "USD") -> Optional[Dict]:
+        """
+        Fetch current exchange rates for a base currency.
+        Uses caching to avoid repeated API calls.
+        """
+        if base_currency in self.rates_cache:
+            return self.rates_cache[base_currency]
         
-    # Complexity check
-    checks = [
-        bool(re.search(r'[a-z]', password)),  # lowercase
-        bool(re.search(r'[A-Z]', password)),  # uppercase
-        bool(re.search(r'[0-9]', password)),  # digits
-        bool(re.search(r'[^a-zA-Z0-9]', password))  # symbols
-    ]
-    strength += sum(checks)
+        try:
+            url = f"{self.base_url}{base_currency}"
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            
+            data = response.json()
+            self.rates_cache[base_currency] = data['rates']
+            return data['rates']
+        except requests.RequestException as e:
+            print(f"Error fetching exchange rates: {e}")
+            return None
+        except KeyError:
+            print("Invalid response format from API")
+            return None
     
-    return min(strength, 5)  # Max strength of 5
+    def convert(self, amount: float, from_currency: str, to_currency: str) -> Optional[float]:
+        """
+        Convert amount from one currency to another.
+        Returns None if conversion fails.
+        """
+        # Normalize currency codes to uppercase
+        from_currency = from_currency.upper()
+        to_currency = to_currency.upper()
+        
+        # Get exchange rates with USD as base
+        rates = self.get_exchange_rates("USD")
+        if not rates:
+            return None
+        
+        try:
+            # Convert to USD first, then to target currency
+            # This handles any currency pair even if direct rates aren't available
+            usd_amount = amount / rates[from_currency]
+            converted_amount = usd_amount * rates[to_currency]
+            return round(converted_amount, 2)
+        except KeyError as e:
+            print(f"Currency not supported: {e}")
+            return None
+        except ZeroDivisionError:
+            print("Error: Division by zero in conversion")
+            return None
 
+# Example usage
 if __name__ == "__main__":
-    # Example usage
-    password = generate_password()
-    print(f"Generated Password: {password}")
+    converter = CurrencyConverter()
     
-    strength = password_strength(password)
-    print(f"Password Strength: {'★' * strength}{'☆' * (5 - strength)} ({strength}/5)")
+    # Convert 100 USD to EUR
+    result = converter.convert(100, "USD", "EUR")
+    if result:
+        print(f"100 USD = {result} EUR")
+    
+    # Convert 50 EUR to JPY
+    result = converter.convert(50, "EUR", "JPY")
+    if result:
+        print(f"50 EUR = {result} JPY")
+    
+    # Convert 1000 INR to USD
+    result = converter.convert(1000, "INR", "USD")
+    if result:
+        print(f"1000 INR = {result} USD")
 ```
 
-## Explanation
+## What This Code Does
 
-This code snippet provides two main functionalities for working with passwords:
+This is a real-time currency converter that fetches current exchange rates from a free API and performs currency conversions between any supported currencies. The converter uses caching to minimize API calls and improve performance.
 
-1. **Password Generation**: 
-   - Uses Python's `secrets` module (secure for cryptographic operations) to generate random passwords
-   - Customizable length and symbol inclusion
-   - Ensures generated passwords contain at least one lowercase, uppercase, digit, and symbol (if enabled)
-   - Avoids common weak password patterns
+## Key Features
 
-2. **Password Strength Evaluation**:
-   - Rates passwords on a 5-point scale
-   - Considers length (longer is better) and character diversity (uppercase, lowercase, numbers, symbols)
-   - Provides visual feedback with star ratings
+- **Real-time Exchange Rates**: Fetches current rates from a reliable API service
+- **Caching**: Stores exchange rates to avoid unnecessary API calls
+- **Flexible Conversion**: Converts between any two supported currencies
+- **Error Handling**: Gracefully handles network issues and invalid currencies
+- **Type Hints**: Uses modern Python typing for better code clarity
 
-### Why It's Useful
+## Why This is Useful
 
-1. Security best practices recommend using randomly generated, complex passwords for online accounts
-2. Helps users create strong passwords without having to think of them manually
-3. Useful for applications that need to enforce password policies
-4. Can be integrated into user registration flows or password reset functionality
+Currency conversion is a common requirement in financial applications, e-commerce platforms, travel apps, and international business software. This snippet provides a production-ready solution that handles:
 
-### How to Run
+1. Network reliability issues
+2. Data caching for better performance
+3. Error recovery when APIs fail
+4. Support for 160+ currencies
+5. Clean, maintainable code structure
 
-1. Simply copy the code into a Python file (e.g., `password_tools.py`)
-2. Run with `python password_tools.py` to see an example
-3. To use in your own code:
-   ```python
-   from password_tools import generate_password, password_strength
-   my_pass = generate_password(length=12, include_symbols=False)
+## How to Run
+
+1. **Install Requirements**:
+   ```bash
+   pip install requests
    ```
 
-The code requires Python 3.6+ (for the `secrets` module) and has no external dependencies.
+2. **Run the Code**:
+   Save as `currency_converter.py` and execute:
+   ```bash
+   python currency_converter.py
+   ```
+
+3. **Use in Your Projects**:
+   ```python
+   from currency_converter import CurrencyConverter
+   
+   converter = CurrencyConverter()
+   usd_to_eur = converter.convert(100, "USD", "EUR")
+   print(f"${100} = €{usd_to_eur}")
+   ```
+
+## Customization Options
+
+- Replace the API endpoint with premium services like OpenExchangeRates or CurrencyLayer for more features
+- Add a database layer for persistent caching
+- Implement rate limiting to respect API quotas
+- Add support for historical exchange rates
+- Include currency symbols and formatting options
+
+The converter is limited to free API calls (about 1500/month) from exchangerate-api.com. For production use, consider getting an API key and using their commercial endpoints.
