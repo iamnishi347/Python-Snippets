@@ -21,14 +21,11 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
-* [2025-09-15](snippets/2025-09-15.html)
-* [2025-09-14](snippets/2025-09-14.html)
-* [2025-09-13](snippets/2025-09-13.html)
-* [2025-09-12](snippets/2025-09-12.html)
-* [2025-09-11](snippets/2025-09-11.html)
-* [2025-09-10](snippets/2025-09-10.html)
-* [2025-09-09](snippets/2025-09-09.html)
-* [2025-09-08](snippets/2025-09-08.html)
+* [Real-time Currency Converter with API Integration](snippets/2025-09-15.md)
+* [Asynchronous File Downloader with Progress Bar](snippets/2025-09-14.md)
+* [Download and Save an Image from a URL in Python](snippets/2025-09-13.md)
+* [File Size Monitor Script](snippets/2025-09-12.md)
+* [HTTP Request Retry Decorator with Exponential Backoff](snippets/2025-09-11.md)
 * [FastAPI Endpoint for Uploading and Validating CSV Files](snippets/2025-09-07.md)
 * [Smart Configuration Manager with Environment Variable Override](snippets/2025-09-06.md)
 * [Simple Yet Effective Web API Rate Limiter Decorator](snippets/2025-09-05.md)

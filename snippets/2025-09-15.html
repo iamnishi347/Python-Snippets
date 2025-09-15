@@ -1,0 +1,71 @@
+# Asynchronous File Downloader with Progress Bar  
+
+This snippet demonstrates how to download files asynchronously in Python while showing a progress bar. It uses `aiohttp` for asynchronous HTTP requests and `tqdm` for the progress bar visualization.  
+
+```python
+import aiohttp
+import asyncio
+from tqdm import tqdm
+import os
+
+async def download_file(url, output_path):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            if response.status != 200:
+                raise Exception(f"Failed to download: HTTP {response.status}")
+            
+            total_size = int(response.headers.get('content-length', 0))
+            block_size = 1024  # 1 KB
+            
+            progress_bar = tqdm(total=total_size, unit='B', unit_scale=True, desc=os.path.basename(output_path))
+            
+            with open(output_path, 'wb') as file:
+                while True:
+                    chunk = await response.content.read(block_size)
+                    if not chunk:
+                        break
+                    file.write(chunk)
+                    progress_bar.update(len(chunk))
+            progress_bar.close()
+
+async def main():
+    url = "https://example.com/largefile.zip"  # Replace with your file URL
+    output_path = "downloaded_file.zip"        # Replace with desired output path
+    
+    try:
+        await download_file(url, output_path)
+        print(f"Download completed: {output_path}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+## Explanation  
+
+### What It Does  
+This script:  
+1. Downloads a file from a given URL asynchronously using `aiohttp`.  
+2. Displays a progress bar (`tqdm`) showing download status (bytes downloaded, speed, etc.).  
+3. Saves the file to a specified local path.  
+
+### Why It's Useful  
+- **Efficiency**: Asynchronous downloading ensures the script doesn’t block other tasks.  
+- **User Feedback**: The progress bar provides visual feedback for large downloads.  
+- **Robustness**: Handles errors gracefully (e.g., failed requests).  
+
+### How to Run  
+1. Install dependencies:  
+   ```sh
+   pip install aiohttp tqdm
+   ```  
+2. Replace `url` and `output_path` in `main()` with your target file and desired save location.  
+3. Run the script:  
+   ```sh
+   python downloader.py
+   ```  
+
+### Notes  
+- Works best for large files where progress tracking is helpful.  
+- For multiple files, extend with `asyncio.gather()` to parallelize downloads.
