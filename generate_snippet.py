@@ -1,8 +1,7 @@
 import os
-import datetime
-import subprocess
 import sys
 import requests
+import datetime
 import time
 import re
 
@@ -18,12 +17,11 @@ readme_file = "README.md"
 if os.path.exists(readme_file):
     with open(readme_file, "r", encoding="utf-8") as f:
         readme_content = f.read()
-        # Extract titles inside snippet list section
         match = re.search(r"<!-- SNIPPETS:LIST -->(.*?)<!-- SNIPPETS:LIST-END -->", readme_content, re.S)
         if match:
             existing_titles = re.findall(r"\* \[(.*?)\]", match.group(1))
 
-# 3. Define prompt for snippet generation with duplicate avoidance
+# 3. Define prompt for snippet generation
 avoid_text = ""
 if existing_titles:
     avoid_text = "Avoid generating snippets about: " + ", ".join(existing_titles[:10]) + ". "
@@ -42,7 +40,7 @@ prompt = (
 BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODELS = [
     "deepseek/deepseek-chat-v3-0324:free",
-    "qwen/qwen3-coder:free"  # fallback model
+    "qwen/qwen3-coder:free"  # fallback
 ]
 
 headers = {
@@ -62,7 +60,7 @@ for model in MODELS:
             {"role": "user", "content": prompt},
         ],
         "max_output_tokens": 800,
-        "temperature": 0.9,  # make outputs more varied
+        "temperature": 0.9,
     }
 
     for attempt in range(3):
@@ -99,37 +97,3 @@ with open(filename, "w", encoding="utf-8") as f:
     f.write(snippet_content)
 
 print(f"✅ Snippet saved to {filename}")
-
-# 7. Update README.md
-marker_start = "<!-- SNIPPETS:LIST -->"
-marker_end = "<!-- SNIPPETS:LIST-END -->"
-new_snippet_link = f"* [{snippet_content.splitlines()[0].replace('#','').strip()}]({filename})\n"
-
-if os.path.exists(readme_file):
-    with open(readme_file, "r", encoding="utf-8") as f:
-        readme_content = f.read()
-    if marker_start in readme_content:
-        updated_readme = re.sub(
-            f"({marker_start})(.*?)({marker_end})",
-            f"\\1\n{new_snippet_link}\\2\\3",
-            readme_content,
-            flags=re.S
-        )
-        with open(readme_file, "w", encoding="utf-8") as f:
-            f.write(updated_readme)
-        print("✅ README.md updated.")
-    else:
-        print("⚠️ Marker not found in README.md — skipping update.")
-
-# 8. Commit and push
-try:
-    subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
-    subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
-    subprocess.run(["git", "add", filename, readme_file], check=True)
-    commit_message = f"docs: Add new code snippet for {date_string}"
-    subprocess.run(["git", "commit", "-m", commit_message], check=True)
-    subprocess.run(["git", "push", "origin", "main"], check=True)
-    print("✅ Changes committed and pushed.")
-except subprocess.CalledProcessError as e:
-    print(f"❌ Git command failed: {e}")
-    sys.exit(1)
