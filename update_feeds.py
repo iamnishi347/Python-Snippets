@@ -11,35 +11,23 @@ SITEMAP_FILE = "sitemap.xml"
 RSS_FILE = "rss.xml"
 
 def get_snippets():
+    """Get all snippets and extract title from # Title (Markdown)."""
     snippets = []
     for fname in sorted(os.listdir(SNIPPETS_DIR), reverse=True):
-        if fname.endswith((".html", ".md")):
+        if fname.endswith(".md"):
             fpath = os.path.join(SNIPPETS_DIR, fname)
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
 
-            title = None
-            if fname.endswith(".html"):
-                # Look for <h1> in HTML
-                match = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.IGNORECASE)
-                if match:
-                    title = match.group(1).strip()
-            else:
-                # Look for markdown "# Title" in MD
-                match = re.search(r"^# (.*)", content, re.MULTILINE)
-                if match:
-                    title = match.group(1).strip()
-
-            # Fallback if no title found
-            if not title:
-                title = fname.replace(".html", "").replace(".md", "")
+            # Extract title from Markdown heading
+            match = re.search(r"^# (.*)", content, re.MULTILINE)
+            title = match.group(1).strip() if match else fname.replace(".md", "")
 
             snippets.append((fname, title))
     return snippets
 
-
 def update_readme(snippets):
-    """Update README with all snippets (.md + .html)."""
+    """Update README with titles instead of filenames."""
     with open(README_FILE, "r", encoding="utf-8") as f:
         readme = f.read()
 
@@ -57,16 +45,16 @@ def update_readme(snippets):
         f.write(new_readme)
 
 def generate_sitemap(snippets):
-    """Generate sitemap only for .html snippets."""
+    """Generate sitemap using .html links for all .md snippets."""
     urlset = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     today = datetime.date.today().isoformat()
 
     for fname, _ in snippets:
-        if not fname.endswith(".html"):
-            continue
+        # Change extension to .html for RSS/sitemap link
+        html_fname = fname.replace(".md", ".html")
         url = SubElement(urlset, "url")
         loc = SubElement(url, "loc")
-        loc.text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
+        loc.text = f"{SITE_URL}/{SNIPPETS_DIR}/{html_fname}"
         lastmod = SubElement(url, "lastmod")
         lastmod.text = today
 
@@ -75,20 +63,20 @@ def generate_sitemap(snippets):
         f.write(xml_str)
 
 def generate_rss(snippets):
-    """Generate RSS feed only for .html snippets."""
+    """Generate RSS feed using .html links for all .md snippets."""
     rss = Element("rss", version="2.0")
     channel = SubElement(rss, "channel")
     SubElement(channel, "title").text = "Python Snippets"
     SubElement(channel, "link").text = SITE_URL
     SubElement(channel, "description").text = "Daily AI-generated Python snippets"
 
-    html_snippets = [s for s in snippets if s[0].endswith(".html")]
-
-    for fname, title in html_snippets[:20]:  # latest 20 html only
+    # Latest 20 snippets
+    for fname, title in snippets[:20]:
+        html_fname = fname.replace(".md", ".html")
         item = SubElement(channel, "item")
         SubElement(item, "title").text = title
-        SubElement(item, "link").text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
-        SubElement(item, "guid").text = f"{SITE_URL}/{SNIPPETS_DIR}/{fname}"
+        SubElement(item, "link").text = f"{SITE_URL}/{SNIPPETS_DIR}/{html_fname}"
+        SubElement(item, "guid").text = f"{SITE_URL}/{SNIPPETS_DIR}/{html_fname}"
         SubElement(item, "pubDate").text = datetime.datetime.utcnow().strftime(
             "%a, %d %b %Y %H:%M:%S +0000"
         )
@@ -102,4 +90,4 @@ if __name__ == "__main__":
     update_readme(snippets)
     generate_sitemap(snippets)
     generate_rss(snippets)
-    print("✅ Feeds and README updated successfully (HTML only in RSS + sitemap).")
+    print("✅ Feeds and README updated successfully (MD snippets, RSS/sitemap links as HTML).")
