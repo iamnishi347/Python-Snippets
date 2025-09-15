@@ -1,0 +1,64 @@
+# Web Scraping with Python using BeautifulSoup and Requests  
+
+This snippet demonstrates how to scrape a webpage to extract useful information, such as headlines from a news website. Web scraping is a common task for data collection, research, and automation.  
+
+```python
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_headlines(url):
+    # Send a GET request to the URL
+    response = requests.get(url)
+    
+    # Check if request was successful
+    if response.status_code == 200:
+        # Parse the HTML content
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Extract headlines (example: looking for <h2> tags)
+        headlines = [h.get_text().strip() for h in soup.find_all('h2')]
+        
+        return headlines
+    else:
+        print(f"Failed to fetch page. Status code: {response.status_code}")
+        return []
+
+# Example usage
+url = "https://example-news-website.com"
+headlines = scrape_headlines(url)
+
+for idx, headline in enumerate(headlines, 1):
+    print(f"{idx}. {headline}")
+```
+
+### Explanation  
+
+1. **Imports**:  
+   - `requests` fetches the webpage.  
+   - `BeautifulSoup` parses the HTML for data extraction.  
+
+2. **Function `scrape_headlines`**:  
+   - Sends a `GET` request to the provided URL.  
+   - Checks if the request succeeded (status code 200).  
+   - Uses `BeautifulSoup` to parse the HTML and extract text from `<h2>` tags (commonly used for headlines).  
+
+3. **Example Usage**:  
+   - Replace `https://example-news-website.com` with a real news site URL (ensure compliance with their `robots.txt`).  
+   - Prints enumerated headlines for readability.  
+
+### Why It's Useful  
+- Automates data collection from websites.  
+- Useful for aggregating news, monitoring updates, or building datasets.  
+
+### How to Run  
+1. Install dependencies:  
+   ```sh
+   pip install requests beautifulsoup4
+   ```  
+2. Save the script (e.g., `scraper.py`) and run:  
+   ```sh
+   python scraper.py
+   ```  
+
+### Note  
+Always respect website terms of service and `robots.txt` rules. Use delays (`time.sleep`) between requests to avoid overloading servers.
