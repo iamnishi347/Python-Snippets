@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Parallel File Processing with ThreadPoolExecutor](snippets/2025-09-19.md)
 * [Real-time Currency Converter with API Integration](snippets/2025-09-15.md)
 * [Asynchronous File Downloader with Progress Bar](snippets/2025-09-14.md)
 * [Download and Save an Image from a URL in Python](snippets/2025-09-13.md)
