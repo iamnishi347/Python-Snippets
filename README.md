@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [JSON Data Validator with Schema Validation](snippets/2025-09-24.md)
 * [Database Connection Pool Manager with Context Manager](snippets/2025-09-22.md)
 * [Parallel File Processing with ThreadPoolExecutor](snippets/2025-09-19.md)
 * [Real-time Currency Converter with API Integration](snippets/2025-09-15.md)
