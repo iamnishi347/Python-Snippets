@@ -5,118 +5,124 @@
   <link>https://snippets.dft.codes</link>
   <description>Daily AI-generated Python snippets</description>
   <item>
+   <title>Parallel Image Thumbnail Generator with ThreadPoolExecutor</title>
+   <link>https://snippets.dft.codes/snippets/2025-09-27.html</link>
+   <guid>https://snippets.dft.codes/snippets/2025-09-27.html</guid>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
+  </item>
+  <item>
    <title>JSON Data Validator with Schema Validation</title>
    <link>https://snippets.dft.codes/snippets/2025-09-24.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-24.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Database Connection Pool Manager with Context Manager</title>
    <link>https://snippets.dft.codes/snippets/2025-09-22.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-22.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Parallel File Processing with ThreadPoolExecutor</title>
    <link>https://snippets.dft.codes/snippets/2025-09-19.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-19.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Real-time Currency Converter with API Integration</title>
    <link>https://snippets.dft.codes/snippets/2025-09-15.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-15.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Asynchronous File Downloader with Progress Bar</title>
    <link>https://snippets.dft.codes/snippets/2025-09-14.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-14.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Download and Save an Image from a URL in Python</title>
    <link>https://snippets.dft.codes/snippets/2025-09-13.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-13.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>File Size Monitor Script</title>
    <link>https://snippets.dft.codes/snippets/2025-09-12.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-12.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>HTTP Request Retry Decorator with Exponential Backoff</title>
    <link>https://snippets.dft.codes/snippets/2025-09-11.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-11.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>FastAPI Endpoint for Uploading and Validating CSV Files</title>
    <link>https://snippets.dft.codes/snippets/2025-09-07.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-07.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Smart Configuration Manager with Environment Variable Override</title>
    <link>https://snippets.dft.codes/snippets/2025-09-06.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-06.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Simple Yet Effective Web API Rate Limiter Decorator</title>
    <link>https://snippets.dft.codes/snippets/2025-09-05.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-05.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Efficient JSON Log Parser for Large Files</title>
    <link>https://snippets.dft.codes/snippets/2025-09-03.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-03.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Secure Password Generator with Customizable Complexity</title>
    <link>https://snippets.dft.codes/snippets/2025-09-02.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-02.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Automatic Database Backup with Rotation and Compression</title>
    <link>https://snippets.dft.codes/snippets/2025-09-01.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-01.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Efficient CSV Data Validation with Pandas</title>
    <link>https://snippets.dft.codes/snippets/2025-08-30.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-08-30.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Parallel Image Processing with Multiprocessing</title>
    <link>https://snippets.dft.codes/snippets/2025-08-29.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-08-29.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Real-time File System Monitor with Pattern Matching</title>
    <link>https://snippets.dft.codes/snippets/2025-08-27.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-08-27.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Asynchronous HTTP Requests with aiohttp for Concurrent API Calls</title>
    <link>https://snippets.dft.codes/snippets/2025-08-26.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-08-26.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
   <item>
    <title>Asynchronous Web Scraper with aiohttp and BeautifulSoup</title>
    <link>https://snippets.dft.codes/snippets/2025-08-23.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-08-23.html</guid>
-   <pubDate>Wed, 24 Sep 2025 12:31:51 +0000</pubDate>
+   <pubDate>Sat, 27 Sep 2025 12:28:04 +0000</pubDate>
   </item>
  </channel>
 </rss>

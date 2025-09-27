@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Parallel Image Thumbnail Generator with ThreadPoolExecutor](snippets/2025-09-27.md)
 * [JSON Data Validator with Schema Validation](snippets/2025-09-24.md)
 * [Database Connection Pool Manager with Context Manager](snippets/2025-09-22.md)
 * [Parallel File Processing with ThreadPoolExecutor](snippets/2025-09-19.md)
