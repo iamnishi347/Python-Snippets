@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Secure Password Generator with Customizable Requirements](snippets/2025-09-28.md)
 * [Parallel Image Thumbnail Generator with ThreadPoolExecutor](snippets/2025-09-27.md)
 * [JSON Data Validator with Schema Validation](snippets/2025-09-24.md)
 * [Database Connection Pool Manager with Context Manager](snippets/2025-09-22.md)
