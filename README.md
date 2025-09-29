@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time System Resource Monitor with Historical Data Visualization](snippets/2025-09-29.md)
 * [Secure Password Generator with Customizable Requirements](snippets/2025-09-28.md)
 * [Parallel Image Thumbnail Generator with ThreadPoolExecutor](snippets/2025-09-27.md)
 * [JSON Data Validator with Schema Validation](snippets/2025-09-24.md)
