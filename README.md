@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Web Scraping with BeautifulSoup and Requests for Data Extraction](snippets/2025-10-04.md)
 * [Automatic File Backup with Compression and Scheduling](snippets/2025-10-03.md)
 * [Real-time System Resource Monitor with Historical Data Visualization](snippets/2025-09-29.md)
 * [Secure Password Generator with Customizable Requirements](snippets/2025-09-28.md)
