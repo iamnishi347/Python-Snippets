@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [HTTP Server with Graceful Shutdown and Request Logging](snippets/2025-10-06.md)
 * [Smart Configuration Manager with Environment-Based Loading](snippets/2025-10-05.md)
 * [Web Scraping with BeautifulSoup and Requests for Data Extraction](snippets/2025-10-04.md)
 * [Automatic File Backup with Compression and Scheduling](snippets/2025-10-03.md)
