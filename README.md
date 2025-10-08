@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Efficient CSV to JSON Converter with Data Validation](snippets/2025-10-08.md)
 * [Asynchronous File Downloader with Progress Tracking](snippets/2025-10-07.md)
 * [HTTP Server with Graceful Shutdown and Request Logging](snippets/2025-10-06.md)
 * [Smart Configuration Manager with Environment-Based Loading](snippets/2025-10-05.md)
