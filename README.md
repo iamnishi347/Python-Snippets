@@ -6,9 +6,9 @@ A daily, **AI-generated library of useful Python code snippets** with detailed e
 
 ### How It Works 🤖
 
-This repository is fully automated using **GitHub Actions** and the **Gemini Pro API**.
+This repository is fully automated using **GitHub Actions** and the **Open Router API**.
 
-* **Daily Snippets:** A GitHub Action runs every day to prompt the Gemini Pro model to generate a new, practical Python code snippet.
+* **Daily Snippets:** A GitHub Action runs every day to prompt the AI model to generate a new, practical Python code snippet.
 * **Detailed Explanations:** Each snippet comes with a markdown-formatted explanation, making it a great resource for learning.
 * **Automatic Commits:** The generated snippet and its explanation are automatically committed to this repository.
 
