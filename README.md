@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time Log File Monitor with Pattern Matching and Alert System](snippets/2025-10-14.md)
 * [Efficient CSV to JSON Converter with Data Validation](snippets/2025-10-08.md)
 * [Asynchronous File Downloader with Progress Tracking](snippets/2025-10-07.md)
 * [HTTP Server with Graceful Shutdown and Request Logging](snippets/2025-10-06.md)
