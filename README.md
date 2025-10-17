@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Parallel Image Downloader with Progress Bar](snippets/2025-10-17.md)
 * [Database Connection Pool Manager with Context Manager Support](snippets/2025-10-16.md)
 * [HTTP Request Retry Mechanism with Exponential Backoff](snippets/2025-10-15.md)
 * [Real-time Log File Monitor with Pattern Matching and Alert System](snippets/2025-10-14.md)
