@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Asynchronous Web Scraper with Rate Limiting and Data Export](snippets/2025-10-26.md)
 * [Secure Password Generator with Customizable Complexity](snippets/2025-10-25.md)
 * [Parallel Task Execution with ThreadPoolExecutor](snippets/2025-10-24.md)
 * [Real-time System Resource Monitor with Visualization](snippets/2025-10-22.md)
