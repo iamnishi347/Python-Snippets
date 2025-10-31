@@ -5,124 +5,124 @@
   <link>https://snippets.dft.codes</link>
   <description>Daily AI-generated Python snippets</description>
   <item>
+   <title>Log File Analyzer with Pattern Matching</title>
+   <link>https://snippets.dft.codes/snippets/2025-10-31.html</link>
+   <guid>https://snippets.dft.codes/snippets/2025-10-31.html</guid>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
+  </item>
+  <item>
    <title>JSON Data Validator and Cleaner with Pandas</title>
    <link>https://snippets.dft.codes/snippets/2025-10-30.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-30.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>FastAPI Application with Pydantic Validation for User Registration</title>
    <link>https://snippets.dft.codes/snippets/2025-10-28.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-28.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Automatic Email Validator and Bulk Processor</title>
    <link>https://snippets.dft.codes/snippets/2025-10-27.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-27.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Asynchronous Web Scraper with Rate Limiting and Data Export</title>
    <link>https://snippets.dft.codes/snippets/2025-10-26.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-26.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Secure Password Generator with Customizable Complexity</title>
    <link>https://snippets.dft.codes/snippets/2025-10-25.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-25.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Parallel Task Execution with ThreadPoolExecutor</title>
    <link>https://snippets.dft.codes/snippets/2025-10-24.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-24.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Real-time System Resource Monitor with Visualization</title>
    <link>https://snippets.dft.codes/snippets/2025-10-22.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-22.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Parallel Image Downloader with Progress Bar</title>
    <link>https://snippets.dft.codes/snippets/2025-10-17.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-17.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Database Connection Pool Manager with Context Manager Support</title>
    <link>https://snippets.dft.codes/snippets/2025-10-16.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-16.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>HTTP Request Retry Mechanism with Exponential Backoff</title>
    <link>https://snippets.dft.codes/snippets/2025-10-15.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-15.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Real-time Log File Monitor with Pattern Matching and Alert System</title>
    <link>https://snippets.dft.codes/snippets/2025-10-14.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-14.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Efficient CSV to JSON Converter with Data Validation</title>
    <link>https://snippets.dft.codes/snippets/2025-10-08.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-08.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Asynchronous File Downloader with Progress Tracking</title>
    <link>https://snippets.dft.codes/snippets/2025-10-07.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-07.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>HTTP Server with Graceful Shutdown and Request Logging</title>
    <link>https://snippets.dft.codes/snippets/2025-10-06.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-06.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Smart Configuration Manager with Environment-Based Loading</title>
    <link>https://snippets.dft.codes/snippets/2025-10-05.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-05.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Web Scraping with BeautifulSoup and Requests for Data Extraction</title>
    <link>https://snippets.dft.codes/snippets/2025-10-04.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-04.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Automatic File Backup with Compression and Scheduling</title>
    <link>https://snippets.dft.codes/snippets/2025-10-03.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-10-03.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Real-time System Resource Monitor with Historical Data Visualization</title>
    <link>https://snippets.dft.codes/snippets/2025-09-29.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-29.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
   <item>
    <title>Secure Password Generator with Customizable Requirements</title>
    <link>https://snippets.dft.codes/snippets/2025-09-28.html</link>
    <guid>https://snippets.dft.codes/snippets/2025-09-28.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
-  </item>
-  <item>
-   <title>Parallel Image Thumbnail Generator with ThreadPoolExecutor</title>
-   <link>https://snippets.dft.codes/snippets/2025-09-27.html</link>
-   <guid>https://snippets.dft.codes/snippets/2025-09-27.html</guid>
-   <pubDate>Thu, 30 Oct 2025 12:33:46 +0000</pubDate>
+   <pubDate>Fri, 31 Oct 2025 12:39:40 +0000</pubDate>
   </item>
  </channel>
 </rss>

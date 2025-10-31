@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Log File Analyzer with Pattern Matching](snippets/2025-10-31.md)
 * [JSON Data Validator and Cleaner with Pandas](snippets/2025-10-30.md)
 * [FastAPI Application with Pydantic Validation for User Registration](snippets/2025-10-28.md)
 * [Automatic Email Validator and Bulk Processor](snippets/2025-10-27.md)
