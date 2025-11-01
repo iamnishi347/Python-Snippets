@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [RESTful API Client with Automatic Retry and Circuit Breaker Pattern](snippets/2025-11-01.md)
 * [Log File Analyzer with Pattern Matching](snippets/2025-10-31.md)
 * [JSON Data Validator and Cleaner with Pandas](snippets/2025-10-30.md)
 * [FastAPI Application with Pydantic Validation for User Registration](snippets/2025-10-28.md)
