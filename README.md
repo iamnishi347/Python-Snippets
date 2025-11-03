@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [File Integrity Checker Using SHA-256 Hashing](snippets/2025-11-03.md)
 * [Environment Variable Loader with Type Conversion and Validation](snippets/2025-11-02.md)
 * [RESTful API Client with Automatic Retry and Circuit Breaker Pattern](snippets/2025-11-01.md)
 * [Log File Analyzer with Pattern Matching](snippets/2025-10-31.md)
