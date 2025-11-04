@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time Currency Exchange Rate Fetcher with Caching](snippets/2025-11-04.md)
 * [File Integrity Checker Using SHA-256 Hashing](snippets/2025-11-03.md)
 * [Environment Variable Loader with Type Conversion and Validation](snippets/2025-11-02.md)
 * [RESTful API Client with Automatic Retry and Circuit Breaker Pattern](snippets/2025-11-01.md)
