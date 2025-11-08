@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Asynchronous Web Scraper with BeautifulSoup and aiohttp](snippets/2025-11-08.md)
 * [Parallel File Processing with ThreadPoolExecutor](snippets/2025-11-06.md)
 * [Configurable Data Backup Utility with Compression and Progress Tracking](snippets/2025-11-05.md)
 * [Real-time Currency Exchange Rate Fetcher with Caching](snippets/2025-11-04.md)
