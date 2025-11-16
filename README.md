@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2025-11-16.md)
 * [CSV to JSON Converter with Custom Delimiters](snippets/2025-11-15.md)
 * [Secure Password Generator with Customizable Rules](snippets/2025-11-14.md)
 * [Concurrent URL Status Checker with asyncio and aiohttp](snippets/2025-11-13.md)
