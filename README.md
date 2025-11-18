@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [API Rate Limiter Decorator for Function Calls](snippets/2025-11-18.md)
 * [Log File Analyzer: Extract and Count IP Addresses](snippets/2025-11-17.md)
 * [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2025-11-16.md)
 * [CSV to JSON Converter with Custom Delimiters](snippets/2025-11-15.md)
