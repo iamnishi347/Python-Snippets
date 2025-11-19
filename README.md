@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Email Validator with SMTP Verification](snippets/2025-11-19.md)
 * [API Rate Limiter Decorator for Function Calls](snippets/2025-11-18.md)
 * [Log File Analyzer: Extract and Count IP Addresses](snippets/2025-11-17.md)
 * [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2025-11-16.md)
