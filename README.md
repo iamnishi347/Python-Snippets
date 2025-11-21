@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Database Connection Pool Manager with Context Manager Support](snippets/2025-11-21.md)
 * [Email Validator with SMTP Verification](snippets/2025-11-19.md)
 * [API Rate Limiter Decorator for Function Calls](snippets/2025-11-18.md)
 * [Log File Analyzer: Extract and Count IP Addresses](snippets/2025-11-17.md)
