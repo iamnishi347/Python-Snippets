@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Web Scraping with BeautifulSoup and Requests](snippets/2025-11-25.md)
 * [File Integrity Checker with SHA-256 Hashing](snippets/2025-11-23.md)
 * [Database Connection Pool Manager with Context Manager Support](snippets/2025-11-21.md)
 * [Email Validator with SMTP Verification](snippets/2025-11-19.md)
