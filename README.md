@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Password Strength Validator with Feedback](snippets/2025-11-29.md)
 * [Async HTTP Client with Retry Logic and Timeout Handling](snippets/2025-11-27.md)
 * [Real-time System Resource Monitor with Alerting](snippets/2025-11-26.md)
 * [Web Scraping with BeautifulSoup and Requests](snippets/2025-11-25.md)
