@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic Backup Manager with Compression and Rotation](snippets/2025-12-05.md)
 * [JSON Data Validator with Schema Enforcement](snippets/2025-11-30.md)
 * [Password Strength Validator with Feedback](snippets/2025-11-29.md)
 * [Async HTTP Client with Retry Logic and Timeout Handling](snippets/2025-11-27.md)
