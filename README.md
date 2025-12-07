@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Concurrent File Downloader with Progress Tracking](snippets/2025-12-07.md)
 * [Automatic Backup Manager with Compression and Rotation](snippets/2025-12-05.md)
 * [JSON Data Validator with Schema Enforcement](snippets/2025-11-30.md)
 * [Password Strength Validator with Feedback](snippets/2025-11-29.md)
