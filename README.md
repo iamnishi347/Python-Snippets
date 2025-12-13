@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time Log File Monitor with Pattern Matching](snippets/2025-12-13.md)
 * [API Rate Limiter with Sliding Window Algorithm](snippets/2025-12-10.md)
 * [Environment Variable Configuration Loader with Type Casting](snippets/2025-12-09.md)
 * [Concurrent File Downloader with Progress Tracking](snippets/2025-12-07.md)
