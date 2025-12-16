@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [File Integrity Checker with SHA-256 Hashing](snippets/2025-12-16.md)
 * [Database Connection Pool Manager with Context Manager Support](snippets/2025-12-15.md)
 * [Real-time Log File Monitor with Pattern Matching](snippets/2025-12-13.md)
 * [API Rate Limiter with Sliding Window Algorithm](snippets/2025-12-10.md)
