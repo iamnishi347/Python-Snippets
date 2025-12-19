@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Asynchronous HTTP Client with Retry Logic and Timeout Handling](snippets/2025-12-19.md)
 * [Real-time System Resource Monitor with Alerts](snippets/2025-12-18.md)
 * [Web Scraping with BeautifulSoup and Requests](snippets/2025-12-17.md)
 * [File Integrity Checker with SHA-256 Hashing](snippets/2025-12-16.md)
