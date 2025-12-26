@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Password Strength Validator with Feedback](snippets/2025-12-26.md)
 * [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2025-12-25.md)
 * [Send Email with HTML Content and Attachments using Python](snippets/2025-12-23.md)
 * [Password-Protected ZIP File Creator and Extractor](snippets/2025-12-22.md)
