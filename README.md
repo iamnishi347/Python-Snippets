@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Generate and Validate JWT Tokens with PyJWT](snippets/2025-12-30.md)
 * [Bulk Image Format Converter with Metadata Preservation](snippets/2025-12-27.md)
 * [Password Strength Validator with Feedback](snippets/2025-12-26.md)
 * [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2025-12-25.md)
