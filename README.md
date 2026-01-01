@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Fetch and Display Weather Information from OpenWeatherMap API](snippets/2026-01-01.md)
 * [Automatic PDF Text Extractor with Metadata Analysis](snippets/2025-12-31.md)
 * [Generate and Validate JWT Tokens with PyJWT](snippets/2025-12-30.md)
 * [Bulk Image Format Converter with Metadata Preservation](snippets/2025-12-27.md)
