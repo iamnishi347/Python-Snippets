@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Real-time Currency Converter with Exchange Rate Caching](snippets/2026-01-02.md)
 * [Fetch and Display Weather Information from OpenWeatherMap API](snippets/2026-01-01.md)
 * [Automatic PDF Text Extractor with Metadata Analysis](snippets/2025-12-31.md)
 * [Generate and Validate JWT Tokens with PyJWT](snippets/2025-12-30.md)
