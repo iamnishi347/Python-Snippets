@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Monitor System Resources and Send Alerts via Email](snippets/2026-01-04.md)
 * [Automatic Screenshot Taker with Timestamp and Upload Capability](snippets/2026-01-03.md)
 * [Real-time Currency Converter with Exchange Rate Caching](snippets/2026-01-02.md)
 * [Fetch and Display Weather Information from OpenWeatherMap API](snippets/2026-01-01.md)
