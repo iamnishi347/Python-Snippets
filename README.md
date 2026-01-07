@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic File Organizer by File Type and Date](snippets/2026-01-07.md)
 * [Automatic CSV to Excel Converter with Data Validation](snippets/2026-01-06.md)
 * [Monitor System Resources and Send Alerts via Email](snippets/2026-01-04.md)
 * [Automatic Screenshot Taker with Timestamp and Upload Capability](snippets/2026-01-03.md)
