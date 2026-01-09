@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic Email Newsletter Sender with HTML Templates and Attachments](snippets/2026-01-09.md)
 * [Automatic Backup Creator with Compression and Scheduling](snippets/2026-01-08.md)
 * [Automatic File Organizer by File Type and Date](snippets/2026-01-07.md)
 * [Automatic CSV to Excel Converter with Data Validation](snippets/2026-01-06.md)
