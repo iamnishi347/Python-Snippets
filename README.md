@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Automatic Weather Data Fetcher with Forecast Caching](snippets/2026-01-13.md)
 * [Automatic PDF Merger with Bookmark Generation](snippets/2026-01-12.md)
 * [Automatic Password Generator with Customizable Complexity](snippets/2026-01-11.md)
 * [Automatic Image Resizer with Aspect Ratio Preservation](snippets/2026-01-10.md)
