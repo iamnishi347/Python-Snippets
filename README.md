@@ -21,6 +21,7 @@ You can browse all the generated code snippets here:
 
 ## Available Snippets
 <!-- SNIPPETS:LIST -->
+* [Web Scraping Tool for Extracting Product Prices](snippets/2026-01-14.md)
 * [Automatic Weather Data Fetcher with Forecast Caching](snippets/2026-01-13.md)
 * [Automatic PDF Merger with Bookmark Generation](snippets/2026-01-12.md)
 * [Automatic Password Generator with Customizable Complexity](snippets/2026-01-11.md)
